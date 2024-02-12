@@ -1,0 +1,36 @@
+type DocumentsEntry {
+  _id: String
+  exercise: String
+  reps: Int
+  weight: Float
+}
+
+type Root {
+  documents: [DocumentsEntry]
+}
+
+type Query {
+  sets(exercise: String!, username: String!): Root
+    @rest(
+      method: POST
+      endpoint: "https://eu-central-1.aws.data.mongodb-api.com/app/data-bvdaw/endpoint/data/v1/action/find"
+      headers: [
+        { name: "access-control-request-headers", value: "*" }
+        {
+          name: "api-key"
+          value: "sXzKpYzryV0ep8KKmPzfZTtXkB9PJ1GEG1X8WVTln4RXguQTsJw1628FbyQ1TuQ6"
+        }
+      ]
+      postbody: """
+        {
+          "collection": "sets", 
+          "dataSource": "Cluster0",
+          "database": "workouts",
+          "filter": {
+            "exercise": "{{ .Get "exercise" }}",
+            "username": "{{ .Get "username" }}"
+          }
+        }
+      """
+    )
+}

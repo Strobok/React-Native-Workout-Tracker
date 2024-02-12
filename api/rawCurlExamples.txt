@@ -1,0 +1,34 @@
+stepzen import curl https://api.api-ninjas.com/v1/exercises -H "X-API-KEY: jhMA8K6DIFc4PHPQSGwItw==lIOQqgWws34hFG6Q"
+
+strobok1
+0ni2ryaYcnjBWh4e
+
+178.149.90.181/32
+
+
+stepzen import curl --request POST 'https://eu-central-1.aws.data.mongodb-api.com/app/data-bvdaw/endpoint/data/v1/action/find' \
+--header 'Content-Type: application/json' \
+--header 'Access-Control-Request-Headers: *' \
+--header 'api-key: sXzKpYzryV0ep8KKmPzfZTtXkB9PJ1GEG1X8WVTln4RXguQTsJw1628FbyQ1TuQ6' \
+--data-raw '{
+    "collection": "sets",
+    "database": "workouts",
+    "dataSource": "Cluster0"
+}'
+
+
+stepzen import curl "https://eu-central-1.aws.data.mongodb-api.com/app/data-bvdaw/endpoint/data/v1/action/insertOne" \
+  -X POST \
+  -H "apiKey: sXzKpYzryV0ep8KKmPzfZTtXkB9PJ1GEG1X8WVTln4RXguQTsJw1628FbyQ1TuQ6" \
+  -H 'Content-Type: application/json' \
+  -H "Accept: application/json" \
+  -d '{
+    "dataSource": "Cluster0",
+    "database": "workouts",
+    "collection": "sets",
+    "document": {
+      "exercise": "Bla bla trtuc",
+      "weight": 4,
+      "reps": 18
+    }
+  }'
